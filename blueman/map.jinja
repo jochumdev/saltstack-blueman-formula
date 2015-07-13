@@ -1,0 +1,12 @@
+{% set datamap = salt['pillar.get']('blueman', {
+  'lookup': salt['grains.filter_by']({
+    'Debian': {
+      'pkgs': [
+        'blueman',
+      ],
+      'repo': 'blueman/ppa',
+    },
+  }, default='Debian' ),
+
+  'use_repo': False,
+}, merge=True) %}
